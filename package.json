@@ -1,0 +1,26 @@
+{
+  "name": "assignments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RajeswarSharma/carselona-assignment.git"
+  },
+  "author": "Rajeswar Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RajeswarSharma/carselona-assignment/issues"
+  },
+  "homepage": "https://github.com/RajeswarSharma/carselona-assignment#readme",
+  "dependencies": {
+    "dot-env": "^0.0.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
+    "typeorm": "^0.3.17"
+  }
+}
