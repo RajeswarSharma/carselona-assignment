@@ -21,7 +21,7 @@ const getUserByfilters = async (filtersFromUser, options = {}) => {
         if (filtersFromUser.hasOwnProperty(filterKey))
             filterObect[filterKey] = filtersFromUser[filterKey];
     }
-    const projection = { user_uuid: true, firstname: true, lastname: true, email: true, phone: true, created_at: true, updated_at: true,role:true };
+    const projection = { user_uuid: true, firstname: true, lastname: true, email: true, phone: true, created_at: true, updated_at: true, role: true };
     if (options.show_password === true) {
         projection.password = true;
     }
@@ -38,5 +38,17 @@ const getUserByfilters = async (filtersFromUser, options = {}) => {
 
 };
 
-
-module.exports = { addUser, getUserByfilters, addVehicle };
+const vehicleList = async (user_uuid) => {
+    const vechicleList = await dbConnections().repos["vehicle"].find({
+        where: { user_uuid },
+        select: {
+            vehicle_uuid: true,
+            vehicle_type: true,
+            vehicle_model: true,
+            brand: true,
+            number_plate: true
+        }
+    });
+    return vechicleList;
+};
+module.exports = { addUser, getUserByfilters, addVehicle, vehicleList };
