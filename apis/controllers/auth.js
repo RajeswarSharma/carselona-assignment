@@ -1,14 +1,16 @@
-const { dbConnections } = require("../../database/connection");
 const { checkHash, createJWT } = require("../../helpers/common-helpers");
 const { handleError } = require("../../helpers/error-helpers");
 const { getEnvVars } = require("../../helpers/server-helper");
-const { getStaffByfilters } = require("../../services/servicecenter");
+const { getServiceCenterByfilters } = require("../../services/servicecenter");
+const { getStaffByfilters } = require("../../services/staff");
 const { getUserByfilters } = require("../../services/user");
+
 
 const getLoginContorller = (repo) => {
     const fetchUserMethods = {
         "user": getUserByfilters,
-        "staff":getStaffByfilters
+        "staff":getStaffByfilters,
+        "servicecenter":getServiceCenterByfilters
     };
     return async (req, res) => {
         try {

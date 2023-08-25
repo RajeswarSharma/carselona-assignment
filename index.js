@@ -1,10 +1,11 @@
 require("dotenv").config();
+const { loadAndParseEnvVars, getEnvVars } = require("./helpers/server-helper");
+loadAndParseEnvVars();
+
 const express = require("express");
 const app = express();
-const { loadAndParseEnvVars, getEnvVars } = require("./helpers/server-helper");
 const configureApis = require("./apis/conf");
 const { initializeRepositories, dbConnections } = require("./database/connection");
-loadAndParseEnvVars();
 
 const PORT = getEnvVars().SERVER_CONF.PORT || 8000;
 

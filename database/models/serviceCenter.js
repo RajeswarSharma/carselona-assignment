@@ -27,16 +27,6 @@ const serviceCenter = {
             precision: 11,
             scale: 8
         },
-        geom: {
-            type: "geometry",
-            spatialFeatureType: 'Point',
-            srid: 4326,
-        },
-        geom_utm: {
-            type: "geometry",
-            spatialFeatureType: 'Point',
-            srid: 3717,
-        },
         addressLine_1: {
             type: "varchar",
             length: 100,
@@ -72,6 +62,10 @@ const serviceCenter = {
         },
         operate_till: { 
             type: "time" 
+        },
+        role:{
+            type:"int",
+            default: 1002
         },
         created_at: {
             type: "datetime",

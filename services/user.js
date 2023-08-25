@@ -8,6 +8,12 @@ const addUser = async (userData) => {
     return newUser;
 };
 
+const addVehicle = async (vehicleData) => {
+    const { user_uuid, vehicle_type, vehicle_model, brand, number_plate } = vehicleData;
+    const newVahicle = await dbConnections().repos["vehicle"].insert({ user_uuid, vehicle_type, vehicle_model, brand, number_plate });
+    return newVahicle;
+};
+
 const getUserByfilters = async (filtersFromUser, options = {}) => {
     const validUserFilters = ["user_uuid", "email", "phone"];
     const filterObect = {};
@@ -15,7 +21,7 @@ const getUserByfilters = async (filtersFromUser, options = {}) => {
         if (filtersFromUser.hasOwnProperty(filterKey))
             filterObect[filterKey] = filtersFromUser[filterKey];
     }
-    const projection = { user_uuid: true, firstname: true, lastname: true, email: true, phone: true, created_at: true, updated_at: true };
+    const projection = { user_uuid: true, firstname: true, lastname: true, email: true, phone: true, created_at: true, updated_at: true,role:true };
     if (options.show_password === true) {
         projection.password = true;
     }
@@ -31,4 +37,6 @@ const getUserByfilters = async (filtersFromUser, options = {}) => {
     });
 
 };
-module.exports = { addUser, getUserByfilters };
+
+
+module.exports = { addUser, getUserByfilters, addVehicle };

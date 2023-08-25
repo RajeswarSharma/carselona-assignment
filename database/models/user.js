@@ -35,6 +35,10 @@ const user = {
             type: "varchar",
             length: 256,
         },
+        role:{
+            type:"int",
+            default: 1003
+        },
         created_at: {
             type: "datetime",
             createDate: true,
