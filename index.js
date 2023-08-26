@@ -8,6 +8,9 @@ const configureApis = require("./apis/conf");
 const { initializeRepositories, dbConnections } = require("./database/connection");
 
 const PORT = getEnvVars().SERVER_CONF.PORT || 8000;
+if (getEnvVars().CONSTANTS.DISABLE_CONSOLE === true) {
+    console.log = () => { };
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
