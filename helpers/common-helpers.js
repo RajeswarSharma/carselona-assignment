@@ -58,7 +58,7 @@ const verifyJWT = (token, options = {}) => {
         });
         return decoded;
     } catch (error) {
-        throw new ServerError("Sesion expired", getEnvVars().CONSTANTS.HTTP_CODE.UNAUTHORIZED, true);
+        throw new ServerError("Session expired", getEnvVars().CONSTANTS.HTTP_CODE.UNAUTHORIZED, true);
     }
 };
 
