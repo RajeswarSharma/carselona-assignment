@@ -7,6 +7,20 @@ Generate fresh access_token incase older one are expired
 ### Node version: 16.17.1
 ### npm version 8.15.0
 
+### Test Credentials
+```
+ADMIN:
+email - admin1@mail.com
+password - 1234
+
+SERVICE CENTER
+email - speedycare@domain.com
+password - 1234
+
+USER
+email - email1@mail.com
+password 1234
+```
 ## SETUP
 ### 1. Install make utility
 ```shell
