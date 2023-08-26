@@ -10,9 +10,9 @@ const USER_TYPE_USER = getEnvVars().CONSTANTS.USER_TYPES.USER;
 
 router.post("/create", regUser, validationResultCheck, createUser);
 router.post("/vehicle/add", resolveAccessToken, isUserType(USER_TYPE_USER), regVehicle, validationResultCheck, createVehicle);
-router.get("/vehicle/all",resolveAccessToken,isUserType(USER_TYPE_USER),validationResultCheck,getVehicleList)
+router.get("/vehicle/all",resolveAccessToken,isUserType(USER_TYPE_USER),getVehicleList)
 router.post("/booking/add", resolveAccessToken, isUserType(USER_TYPE_USER),addBooking, validationResultCheck, createBooking);
-router.get("/booking/all", resolveAccessToken, isUserType(USER_TYPE_USER), validationResultCheck, bookingList);
+router.get("/booking/all", resolveAccessToken, isUserType(USER_TYPE_USER), bookingList);
 router.put("/booking/:booking_id/cancel", resolveAccessToken, isUserType(USER_TYPE_USER),cancleBooking,validationResultCheck, updateBookingStatus);
 
 
