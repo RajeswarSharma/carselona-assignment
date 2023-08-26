@@ -58,7 +58,7 @@ const verifyJWT = (token, options = {}) => {
         });
         return decoded;
     } catch (error) {
-        throw new ServerError("Internal server Error", getEnvVars().CONSTANTS.HTTP_CODE.INTERNAL_SERVER_ERR, true);
+        throw new ServerError("Internal server Error", getEnvVars().CONSTANTS.HTTP_CODE.UNAUTHORIZED, true);
     }
 };
 
