@@ -1,5 +1,12 @@
 # carselona-assignment
 
+#### Import the following into postman for API set up 
+Postman: /postmant/carselona.postman_collection.json
+
+Generate fresh access_token incase older one are expired
+### Node version: 16.17.1
+### npm version 8.15.0
+
 ## SETUP
 ### 1. Install make utility
 ```shell
@@ -214,3 +221,14 @@ Path param: booking_id,statu
 Access: Admin
 
 GET: /api/admin/booking/matrix
+
+## Migration Commands
+### 1. To generate new migrations 
+```
+make generate-server-migration
+```
+
+### 2. To push migrations
+```
+make run-server-migration
+```

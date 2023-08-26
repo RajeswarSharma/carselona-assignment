@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "038ab6ae-4578-43b0-91cc-2c77535a196c",
+		"name": "carselona",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17398589"
+	},
+	"item": [
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "register-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Rajeswar\",\r\n    \"lastname\": \"Sharma\",\r\n    \"email\": \"email4@mail.com\",\r\n    \"phone\": \"120000000\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{hosted}}/api/user/create"
+					},
+					"response": []
+				},
+				{
+					"name": "register-service_center",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{admin-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_center_name\": \"CarCare Hub\",\r\n    \"state\": \"Punjab\",\r\n    \"city\": \"Mohali\",\r\n    \"zipcode\": \"140415\",\r\n    \"addressLine_1\": \"Central Plaza, Phase 7\",\r\n    \"longitude\": 76.705,\r\n    \"latitude\": 30.708,\r\n    \"email\": \"carcare1@example.com\",\r\n    \"phone\": 4444000010,\r\n    \"operate_from\": \"10:00\",\r\n    \"operate_till\": \"19:00\",\r\n    \"services\": [4001, 4002, 4004]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/api/admin/service-center/add"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email1@mail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{hosted}}/api/auth/login/user"
+					},
+					"response": []
+				},
+				{
+					"name": "login-staff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@mail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/api/auth/login/staff"
+					},
+					"response": []
+				},
+				{
+					"name": "login-servicecenter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"speedycare@domain.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/api/auth/login/servicecenter"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "find",
+			"item": [
+				{
+					"name": "find-service_center",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{admin-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/api/find/service-center?latitude=30.771763&longitude=76.576339&max_distance=90",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"find",
+								"service-center"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "30.771763"
+								},
+								{
+									"key": "longitude",
+									"value": "76.576339"
+								},
+								{
+									"key": "max_distance",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "booking-create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"servicecenter_uuid\":\"92495a6b-97f4-425a-bb7d-4e7feda7da45\", \r\n    \"vehicle_uuid\":\"4b51d77e-b670-41bf-a3dc-4e16527ec3b0\", \r\n    \"service_type_id\":4003, \r\n    \"service_date\":\"2023-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/api/user/booking/add"
+					},
+					"response": []
+				},
+				{
+					"name": "booking-list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{local}}/api/user/booking/all"
+					},
+					"response": []
+				},
+				{
+					"name": "booking-cancel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/api/user/booking/:booking_id/cancel",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"booking",
+								":booking_id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "booking_id",
+									"value": "eb09d1df-e39b-4e7d-ac86-a0d18adc6319"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle-create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"vehicle_type\": 3004,\r\n        \"vehicle_model\": \"Ford Mustang\",\r\n        \"brand\": \"Ford\",\r\n        \"number_plate\": \"GHI 4321\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/api/user/vehicle/add"
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle-list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{local}}/api/user/vehicle/all"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "servicecenter",
+			"item": [
+				{
+					"name": "booking-list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{servicecenter-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{local}}/api/servicecenter/booking/all"
+					},
+					"response": []
+				},
+				{
+					"name": "booking-status_change",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{servicecenter-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/api/servicecenter/booking/:booking_id/:status",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"servicecenter",
+								"booking",
+								":booking_id",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "booking_id",
+									"value": "7fd95a6b-b62b-4065-a59b-13e3c143d733"
+								},
+								{
+									"key": "status",
+									"value": "2004"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "booking-list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{admin-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{local}}/api/admin/booking/all"
+					},
+					"response": []
+				},
+				{
+					"name": "booking-matrix",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{admin-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{local}}/api/admin/booking/matrix"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "admin-token",
+			"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImNhcnNlbG9uYV9zdGFmZl91dWlkIjoiN2FlMzY3NjAtNDJiMS0xMWVlLWJlNTYtMDI0MmFjMTIwMDAyIiwiZmlyc3RuYW1lIjoiU3VuaWwiLCJsYXN0bmFtZSI6IkRhYmFzIiwiZW1haWwiOiJhZG1pbjFAbWFpbC5jb20iLCJwaG9uZSI6IjExMTAwMDAwMDAiLCJyb2xlIjoxMDAxLCJjcmVhdGVkX2F0IjoiMjAyMy0wOC0yNFQxMzozOToxNC43MDFaIiwidXBkYXRlZF9hdCI6IjIwMjMtMDgtMjRUMTM6Mzk6MTQuNzAxWiJ9LCJpYXQiOjE2OTI5MzkwOTEsImV4cCI6MTY5MzAyNTQ5MSwiaXNzIjoiY2Fyc2Vsb25hIn0.DFiJhZB8GcobqHzJycRJ-3FHfH6fyKRDsIwIKDCFbzihtoO-3VJjUjcx1q3Ncw-pTHbGZCtSXa7c6_VdEVfJF9guf1koy5Rb3vKFtqu-K8LOV3QQAv5l5_4bh8mG1-egISquunpc8GtPs1JGvBy4cj-dWnHQQPPSjsXB5-vkcb6eXtbPm6JRJnwx6LTAngJ7ISIpi6acZYUPhKkm6AL5zN88PEbqt4J_u9LU0ZscNcFMGDkunjX0kKeJ62KfVSI6nL8g2fC8kmjGa0LniTa1n8RIRgAJKsqJADRvSLrAJO0PJMSNVRhMUi9Ow4K3SbwoWH8S7drMlqiKzPpS8tXakw",
+			"type": "string"
+		},
+		{
+			"key": "user-token",
+			"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfdXVpZCI6IjgyOGNmNTA0LThmZDAtNDFmMy1hNDljLWYxN2ZlNmZjMzI2NiIsImZpcnN0bmFtZSI6Ik1vaGl0IiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiZW1haWwxQG1haWwuY29tIiwicGhvbmUiOiIxMDAwMDAwMDAiLCJyb2xlIjoxMDAzLCJjcmVhdGVkX2F0IjoiMjAyMy0wOC0yNVQxMToyNjo1OS43NjZaIiwidXBkYXRlZF9hdCI6IjIwMjMtMDgtMjVUMTE6MjY6NTkuNzY2WiJ9LCJpYXQiOjE2OTI5OTE4NTAsImV4cCI6MTY5MzA3ODI1MCwiaXNzIjoiY2Fyc2Vsb25hIn0.KP7elan0mQpJlH3Y8Cam4Uk0Gh6QmOcNMwXqkriZhxkF9Qmf6mAwHtWu3opfRYcMyskAFEn7vmP4O4oR_-no7yWd4rAYqxjxaTVOfKB3bUIgKZ9XOeP789YzgGPveiIklfOALOdZ373ru9TDkFKnTjsIrHZeOvXVEr15F9RZcOwKwOSMS7zLiXrQLqsoOI_lFqq5Vt6FvwtmHfOEYy1eVMd5hYvDTKOhcmSjh3LH6zahvd45RDUXhjykWms9Yszr4OUtClLiHTkYMVmPtQpPZNaA68GSdABsQ1VuiZFDg1krzteDs3mEH1ym-M_4GPWPvddjx2eYdUrlJF7QoOqPFQ",
+			"type": "string"
+		},
+		{
+			"key": "servicecenter-token",
+			"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InNlcnZpY2VjZW50ZXJfdXVpZCI6IjUzOWJkMWQ5LTFkMGYtNGUyMy1hN2QwLTgzMGU1Y2FlN2E4OSIsInNlcnZpY2VfY2VudGVyX25hbWUiOiJTcGVlZHkgQXV0byBDYXJlIiwiZW1haWwiOiJzcGVlZHljYXJlQGRvbWFpbi5jb20iLCJwaG9uZSI6IjMzMzMwMDAwMDAiLCJyb2xlIjoxMDAyLCJjcmVhdGVkX2F0IjoiMjAyMy0wOC0yNVQwMToyNjo1OS42MzZaIiwidXBkYXRlZF9hdCI6IjIwMjMtMDgtMjVUMDQ6MTc6MjQuMzgzWiJ9LCJpYXQiOjE2OTI5NTczMTAsImV4cCI6MTY5MzA0MzcxMCwiaXNzIjoiY2Fyc2Vsb25hIn0.QpttuL1HIbfPpUVbl3f6QUBz1he2mzRdbQ9QVGm75gNVhJsIpJcJN827IQm1mPcx6xhTiZG2OP3jO_hscny-6C2D_Ghdf_J_lvcY_tlayRssIlwRRmeGnaVf-RzwPo95U4pZHn5H-KMkuuAOgLH5wCNEg7D7bM0stHpE7tuGQIc-ZKa8Yb-48O8u4wQDe8ofs9Cp84qSdHwQE2_AlBlSy7dpNP3c7ikBRaBIUumHZ7qNHSHnfIsHNCb7goJctsBFiiK5s_wpb1Gm5PDVDbttoIXSXsLtRDUZzNV0idiGZF613o6zLbYoW8KTld0w12zH-itHnxKQsLS5lGWhbZdWTA",
+			"type": "string"
+		},
+		{
+			"key": "hosted",
+			"value": "http://13.233.178.65:8000",
+			"type": "string"
+		}
+	]
+}

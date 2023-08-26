@@ -21,6 +21,7 @@ clean-install:
 	@npm install
 
 create-env:
+	@ touch .env
 	@sh convertENVJSON.sh
 
 generate_keys:
